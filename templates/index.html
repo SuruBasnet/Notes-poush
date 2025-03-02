@@ -22,11 +22,11 @@
         <tbody>
           {% for i in notes %}
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.description}}</td>
+                <td>{{i.type.name}}</td>
+                <td>{{i.deadline_at}}</td>
               </tr>
           {% endfor %}
         </tbody>
