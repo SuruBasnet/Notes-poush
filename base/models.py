@@ -11,7 +11,7 @@ class Note(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     file = models.FileField(upload_to='media/')
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     type = models.ForeignKey(NoteType,on_delete=models.SET_NULL,null=True)
     deadline_at = models.DateField()
     created_at = models.DateField(auto_now_add=True)
