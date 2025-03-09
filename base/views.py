@@ -18,3 +18,8 @@ def create_note(request):
         Note.objects.create(name=name,description=description,file=file,type=note_type_obj,deadline_at=deadline_at)
     note_type_objs = NoteType.objects.all()
     return render(request,'create_note.html',context={'note_types':note_type_objs})
+
+def edit_note(request,pk):
+    note_objs = Note.objects.get(id=pk)
+    note_type_objs = NoteType.objects.all()
+    return render(request,'edit_note.html',context={'note':note_objs,'note_types':note_type_objs})
