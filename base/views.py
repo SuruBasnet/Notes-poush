@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Note, NoteType
 # from django.http import HttpResponse
 
@@ -21,5 +21,23 @@ def create_note(request):
 
 def edit_note(request,pk):
     note_objs = Note.objects.get(id=pk)
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        file = request.POST.get('file')
+        type = request.POST.get('type')
+        deadline_at = request.POST.get('deadline_at')
+        note_type_obj = NoteType.objects.get(id=type)
+        note_objs.name = name
+        note_objs.description  = description
+        note_objs.file = file
+        note_objs.type = note_type_obj
+        note_objs.deadline_at = deadline_at
+        note_objs.save()
     note_type_objs = NoteType.objects.all()
     return render(request,'edit_note.html',context={'note':note_objs,'note_types':note_type_objs})
+
+def delete_note(request,pk):
+    note_obj = Note.objects.get(id=pk)
+    note_obj.delete()
+    return redirect('home')

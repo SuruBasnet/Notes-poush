@@ -28,7 +28,7 @@
                 <td>{{i.description}}</td>
                 <td>{{i.type}}</td>
                 <td>{{i.deadline_at}}</td>
-                <td><a href="{% url 'edit-note' pk=i.id %}"><Button class="btn btn-warning">Edit</Button></a></td>
+                <td><a href="{% url 'edit-note' pk=i.id %}"><Button class="btn btn-warning">Edit</Button></a> <a href="{% url 'delete-note' pk=i.id %}"><button class="btn btn-danger">Delete</button></a></td>
               </tr>
           {% endfor %}
         </tbody>
