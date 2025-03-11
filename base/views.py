@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Note, NoteType
+from django.contrib.auth.models import User
 # from django.http import HttpResponse
 
 # Create your views here.
@@ -41,3 +42,11 @@ def delete_note(request,pk):
     note_obj = Note.objects.get(id=pk)
     note_obj.delete()
     return redirect('home')
+
+def register(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        User.objects.create(email=email,username=username,password=password)
+    return render(request,'register.html')
