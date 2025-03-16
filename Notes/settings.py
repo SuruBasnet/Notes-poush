@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'base'
 ]
 
+LOGIN_URL = 'login/' # defining our login url to be redirected when user is not valid
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
